@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Your Cart</h2>
+
+{% if products %}
+
+{% for item in products %}
+
+<div class="card mb-3">
+<div class="card-body">
+
+<h5>{{item.name}}</h5>
+
+<p>₹{{item.price}}</p>
+
+<a href="/checkout/{{item.id}}" class="btn btn-success">
+Checkout
+</a>
+
+</div>
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<p>Your cart is empty.</p>
+
+{% endif %}
+
+{% endblock %}

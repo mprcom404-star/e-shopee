@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Sell Material</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+<input name="name" class="form-control mb-2" placeholder="Product Name">
+
+<input name="price" class="form-control mb-2" placeholder="Price">
+
+<input name="category" class="form-control mb-2" placeholder="Category">
+
+<textarea name="description" class="form-control mb-2"></textarea>
+
+<input type="file" name="image" class="form-control mb-2">
+
+<button class="btn btn-success">Sell</button>
+
+</form>
+
+{% endblock %}

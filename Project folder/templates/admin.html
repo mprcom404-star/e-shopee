@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">Admin Dashboard</h2>
+
+<div class="row mb-4">
+
+<div class="col-md-4">
+<div class="card p-3">
+<h5>Total Users</h5>
+<h3>{{ users|length }}</h3>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-3">
+<h5>Total Products</h5>
+<h3>{{ products|length }}</h3>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-3">
+<h5>Total Sales</h5>
+<h3>₹{{ total_sales }}</h3>
+</div>
+</div>
+
+</div>
+
+<h4>Users</h4>
+
+<table class="table table-bordered">
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Action</th>
+</tr>
+
+{% for u in users %}
+
+<tr>
+<td>{{u.id}}</td>
+<td>{{u.name}}</td>
+<td>{{u.email}}</td>
+
+<td>
+<a href="/delete-user/{{u.id}}" class="btn btn-danger btn-sm">
+Delete
+</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<h4 class="mt-5">Products</h4>
+
+<table class="table table-bordered">
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Price</th>
+<th>Seller</th>
+<th>Action</th>
+</tr>
+
+{% for p in products %}
+
+<tr>
+
+<td>{{p.id}}</td>
+<td>{{p.name}}</td>
+<td>₹{{p.price}}</td>
+<td>{{p.seller}}</td>
+
+<td>
+<a href="/delete-product/{{p.id}}" class="btn btn-danger btn-sm">
+Delete
+</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<h4 class="mt-5">Orders</h4>
+
+<table class="table table-bordered">
+
+<tr>
+<th>ID</th>
+<th>Product</th>
+<th>Buyer</th>
+<th>Seller</th>
+<th>Price</th>
+<th>Status</th>
+</tr>
+
+{% for o in orders %}
+
+<tr>
+
+<td>{{o.id}}</td>
+<td>{{o.product_id}}</td>
+<td>{{o.buyer_id}}</td>
+<td>{{o.seller_id}}</td>
+<td>₹{{o.price}}</td>
+<td>{{o.status}}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

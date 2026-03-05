@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Available Materials</h2>
+
+<form method="GET" class="row mb-4">
+
+<div class="col-md-4">
+<input name="search" class="form-control" placeholder="Search products">
+</div>
+
+<div class="col-md-3">
+<select name="category" class="form-control">
+<option value="">All Categories</option>
+<option value="Books">Books</option>
+<option value="Notes">Notes</option>
+<option value="Calculator">Calculator</option>
+</select>
+</div>
+
+<div class="col-md-3">
+<select name="sort" class="form-control">
+<option value="">Sort</option>
+<option value="low">Price Low → High</option>
+<option value="high">Price High → Low</option>
+</select>
+</div>
+
+<div class="col-md-2">
+<button class="btn btn-dark">Search</button>
+</div>
+
+</form>
+
+<div class="row">
+
+{% for item in items %}
+
+<div class="col-md-4">
+
+<div class="card mb-4">
+
+<img src="{{ url_for('static', filename='uploads/' + item.image) }}" height="220">
+
+<div class="card-body">
+
+<h5>{{item.name}}</h5>
+
+<p>{{item.description}}</p>
+
+<p><b>₹{{item.price}}</b></p>
+
+<a href="/product/{{item.id}}" class="btn btn-primary btn-sm">View</a>
+
+<a href="/add-cart/{{item.id}}" class="btn btn-success btn-sm">Cart</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

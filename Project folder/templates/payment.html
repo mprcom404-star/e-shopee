@@ -1,0 +1,37 @@
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<button id="pay-btn">Pay ₹{{product.price}}</button>
+
+<script>
+
+var options = {
+
+key: "YOUR_RAZORPAY_KEY",
+
+amount: "{{order.amount}}",
+
+currency: "INR",
+
+name: "Student Marketplace",
+
+order_id: "{{order.id}}",
+
+handler: function (response){
+
+alert("Payment Successful")
+
+}
+
+};
+
+var rzp = new Razorpay(options);
+
+document.getElementById('pay-btn').onclick = function(e){
+
+rzp.open();
+
+e.preventDefault();
+
+}
+
+</script>

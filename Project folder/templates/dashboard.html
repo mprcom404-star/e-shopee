@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">Your Wishlist</h2>
+
+<div class="row">
+
+{% if wishlist %}
+
+{% for item in wishlist %}
+
+<div class="col-md-4">
+
+<div class="card mb-4">
+
+<img src="{{ url_for('static', filename='uploads/' + item.image) }}"
+class="card-img-top"
+style="height:220px; object-fit:cover;">
+
+<div class="card-body">
+
+<h5>{{ item.name }}</h5>
+
+<p class="text-success fw-bold">₹{{ item.price }}</p>
+
+<a href="/product/{{ item.id }}" class="btn btn-primary btn-sm">
+View
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<p>No items in wishlist yet.</p>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

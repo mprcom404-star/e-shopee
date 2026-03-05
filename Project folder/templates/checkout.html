@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+
+<h2>Checkout</h2>
+
+<form method="POST">
+
+<div class="row">
+
+<div class="col-md-6">
+
+<h4>Shipping Details</h4>
+
+<input name="name" class="form-control mb-3" placeholder="Full Name" required>
+
+<input name="email" class="form-control mb-3" placeholder="Email" required>
+
+<input name="phone" class="form-control mb-3" placeholder="Phone" required>
+
+<textarea name="address" class="form-control mb-3" placeholder="Address"></textarea>
+
+</div>
+
+
+<div class="col-md-6">
+
+<h4>Order Summary</h4>
+
+<div class="card p-3">
+
+<div class="d-flex align-items-center mb-3">
+
+<img src="{{ url_for('static', filename='uploads/' + product.image) }}"
+width="70"
+class="me-3">
+
+<div>
+
+<b>{{ product.name }}</b>
+<br>
+₹{{ product.price }}
+
+</div>
+
+</div>
+
+<hr>
+
+<p>Total Amount</p>
+
+<h3>₹{{ total }}</h3>
+
+<button class="btn btn-success mt-3 w-100">
+Proceed to Payment
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Profile</h2>
+
+<div class="card mb-4">
+<div class="card-body">
+
+<h5>Name: {{user.name}}</h5>
+
+<p>Email: {{user.email}}</p>
+
+<p>Status:
+{% if session.get("user_id") %}
+Logged In
+{% else %}
+Logged Out
+{% endif %}
+</p>
+
+<a href="/edit-profile" class="btn btn-primary">
+Edit Profile
+</a>
+
+<a href="/help" class="btn btn-warning">
+Help Centre
+</a>
+
+</div>
+</div>
+
+<h3>Your Orders</h3>
+
+<table class="table">
+
+<tr>
+<th>Product</th>
+<th>Price</th>
+<th>Status</th>
+<th>Date</th>
+</tr>
+
+{% for order in orders %}
+
+<tr>
+
+<td>{{order.product_id}}</td>
+
+<td>₹{{order.price}}</td>
+
+<td>{{order.status}}</td>
+
+<td>{{order.date}}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
